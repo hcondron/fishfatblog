@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {useStaticQuery, Link, graphql} from 'gatsby';
 import Header from '../components/Header';
 import Spacer from '../components/Spacer';
 import styled from 'styled-components';
@@ -94,6 +95,25 @@ const BlogAuthor = styled.p`
 `;
 
 const IndexPage = () => {
+  const data = useStaticQuery(
+    graphql`
+      query {
+        allMdx {
+          edges {
+            node {
+              frontmatter {
+                date
+                slug
+                excerpt
+                title
+                author
+              }
+            }
+          }
+        }
+      }
+    `,
+  );
   return (
     <main style={pageStyles}>
       <title>Home Page</title>
@@ -124,28 +144,27 @@ const IndexPage = () => {
       </div>
       <Spacer height="x8" />
       <Blogs>
-        {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(() => {
+        {data.allMdx.edges.map(item => {
           return (
             <BlogPostContainer>
               <BlogBoxRed />
               <BlogBoxBlack>
                 <div
                   style={{
+                    width: '90%',
                     padding: '5%',
                     margin: '0 auto',
                     alignSelf: 'flex-end',
                   }}>
-                  <TitleText>
-                    Learning GoLang by building cool shite and stuff
-                  </TitleText>
+                  <TitleText>{item.node.frontmatter.title}</TitleText>
                   <div
                     style={{
                       width: '100%',
                       display: 'flex',
                       justifyContent: 'space-between',
                     }}>
-                    <BlogAuthor>by Harry Condron</BlogAuthor>
-                    <BlogAuthor>02.03.21</BlogAuthor>
+                    <BlogAuthor>{`by ${item.node.frontmatter.author}`}</BlogAuthor>
+                    <BlogAuthor>{item.node.frontmatter.date}</BlogAuthor>
                   </div>
                   <div
                     style={{
