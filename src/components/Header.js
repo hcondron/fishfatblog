@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {Link} from 'gatsby';
 import styled from 'styled-components';
 import theme from '../config/theme';
 import Logo from './Logo';
@@ -52,9 +53,11 @@ const Header = ({}) => {
   return (
     <>
       <Container>
-        <LogoContainer>
-          <Logo />
-        </LogoContainer>
+        <Link to="/">
+          <LogoContainer>
+            <Logo />
+          </LogoContainer>
+        </Link>
         <Tabs>
           <Tab showBorder>
             <TabText>Articles</TabText>

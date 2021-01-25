@@ -91,14 +91,13 @@ const theme = {
   },
 
   fontScale: {
-    x1: '12px',
-    x2: '14px',
-    x3: '16px',
-    x4: '20px',
-    x5: '24px',
-    x5s: '30px',
-    x6: '36px',
-    x7: '48px',
+    x1: '0.8rem',
+    x2: '1rem',
+    x3: '1.25rem',
+    x4: '1.563rem',
+    x5: '1.953rem',
+    x6: '2.441rem',
+    x7: '3.052rem',
     x10: '60px',
   },
 
