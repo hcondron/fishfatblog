@@ -20,11 +20,12 @@ const WelcomeTextContainer = styled.div`
 `;
 
 const SubText = styled(Text)`
-  margin: 0 auto;
+  display: flex;
+  justify-content: center;
   text-align: center;
   @media (${theme.breakpoints.mediumAndUp}) {
     width: 70%;
-    margin: 0;
+    justify-content: flex-start;
     text-align: left;
   } ;
 `;
