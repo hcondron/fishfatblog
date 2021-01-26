@@ -3,6 +3,15 @@ import Header from './Header';
 import Spacer from './Spacer';
 import theme from '../config/theme';
 import styled from 'styled-components';
+import {createGlobalStyle} from 'styled-components';
+
+const Globalstyle = createGlobalStyle`
+  body {
+    margin: 0;
+    background-color: #F8F8FF;
+    margin-bottom: 50px;
+  }
+`;
 
 const pageStyles = {
   fontFamily: 'Helvetica Neue,Helvetica,Arial,sans-serif',
@@ -25,6 +34,7 @@ const MobilePadding = styled.div`
 const Layout = ({children}) => {
   return (
     <main style={pageStyles}>
+      <Globalstyle />
       <MobilePadding>
         <Spacer height="x8" />
         <Header />
