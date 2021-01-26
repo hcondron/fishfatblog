@@ -1,46 +1,42 @@
 import React from 'react';
 import styled from 'styled-components';
-import {graphql} from 'gatsby';
+import {Link, graphql} from 'gatsby';
 import {MDXRenderer} from 'gatsby-plugin-mdx';
 import Spacer from '../components/Spacer';
 import Layout from '../components/Layout';
 import theme from '../config/theme';
-
-const BlogTitle = styled.h1`
-  font-size: ${theme.fontScale.x7};
-  font-weight: ${theme.fontWeight.medium};
-  line-height: 0px;
-  width: 60%;
-`;
-
-const DateText = styled.h1`
-  font-size: ${theme.fontScale.x4};
-  font-weight: ${theme.fontWeight.light};
-  color: ${theme.colors.primary100};
-`;
+import Text from '../components/Text';
 
 const TitleContainer = styled.div`
   display: flex;
-  vertical-align: top;
-  width: 100%;
-  justify-content: space-between;
-`;
-const AuthorText = styled.p`
-  font-size: ${theme.fontScale.x5};
-  line-height: 0px;
-  font-weight: ${theme.fontWeight.light};
+  align-items: top;
+  @media (${theme.breakpoints.mediumAndUp}) {
+    justify-content: flex-start;
+  } ;
 `;
 
 const Divider = styled.div`
   width: 70px;
   height: 7.5px;
   background: ${theme.colors.primary100};
+  @media (${theme.breakpoints.mediumAndUp}) {
+    margin: 0;
+  } ;
 `;
 
-const BackButton = styled.h1`
-  color: ${theme.colors.grey30};
-  font-size: ${theme.fontScale.x3};
-  font-weight: ${theme.fontWeight.normal};
+const BackText = styled(Text)`
+  width: 100%;
+  @media (${theme.breakpoints.mediumAndUp}) {
+    text-align: left;
+  } ;
+`;
+
+const BlogTitle = styled(Text)`
+  width: 100%;
+  @media (${theme.breakpoints.mediumAndUp}) {
+    width: 70%;
+    text-align: left;
+  } ;
 `;
 
 const BodyStyles = styled.div`
@@ -52,29 +48,31 @@ const BodyStyles = styled.div`
   h6,
   p {
     color: ${theme.colors.secondary100};
+    text-align: left;
+    @media (${theme.breakpoints.mediumAndUp}) {
+      text-align: left;
+    }
   }
 
   h1 {
     font-size: ${theme.fontScale.x5};
     font-weight: ${theme.fontWeight.medium};
-    line-height: 15px;
     margin-top: 2rem;
   }
   h2 {
     font-size: ${theme.fontScale.x4};
     font-weight: ${theme.fontWeight.normal};
-    line-height: 7.5px;
   }
   h3 {
     font-size: ${theme.fontScale.x3};
     font-weight: ${theme.fontWeight.normal};
     color: ${theme.colors.grey30};
-    line-height: 5px;
   }
 
   p {
     font-size: ${theme.fontScale.x3};
-    font-weight: ${theme.fontWeight.normal};
+    font-weight: ${theme.fontWeight.light};
+    font-family: 'sans serif';
   }
 
   strong {
@@ -106,13 +104,36 @@ const BodyStyles = styled.div`
 export default function BlogPost({data}) {
   return (
     <Layout>
-      <BackButton>Back</BackButton>
+      <Link to="/" css={{textDecoration: 'none', color: 'inherit'}}>
+        <BackText
+          tag="h1"
+          size="x3"
+          weight="normal"
+          color={theme.colors.grey30}
+          lineheight={1.5}>
+          Back
+        </BackText>
+      </Link>
+      <Spacer height="x4" />
+      <BlogTitle tag="h1" size="x7" weight="medium" lineHeight={1}>
+        {data.mdx.frontmatter.title}
+      </BlogTitle>
+      <Spacer height="x4" />
       <TitleContainer>
-        <BlogTitle>{data.mdx.frontmatter.title}</BlogTitle>
-        <DateText>{data.mdx.frontmatter.date}</DateText>
+        <Text tag="p" size="x3" weight="light" lineHeight={1.5}>
+          {`by ${data.mdx.frontmatter.author}`}
+        </Text>
+        <Spacer width="x4" />
+        <Text
+          tag="h1"
+          size="x3"
+          color={theme.colors.primary100}
+          weight="light"
+          lineHeight={1.5}>
+          {data.mdx.frontmatter.date}
+        </Text>
       </TitleContainer>
-      <AuthorText>{`by ${data.mdx.frontmatter.author}`}</AuthorText>
-      <Spacer height="x2" />
+      <Spacer height="x4" />
       <Divider />
       <Spacer height="x4" />
       <BodyStyles>

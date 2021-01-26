@@ -3,13 +3,17 @@ import {Link} from 'gatsby';
 import styled from 'styled-components';
 import theme from '../config/theme';
 import Logo from './Logo';
+import Text from './Text';
 
 const Container = styled.div`
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   height: 70px;
-  padding-top: ${theme.spacing.x4};
+  padding-top: ${theme.spacing.x7};
+  @media (${theme.breakpoints.mediumAndUp}) {
+    justify-content: flex-start;
+  }
 `;
 
 const LogoContainer = styled.div`
@@ -58,14 +62,6 @@ const Header = ({}) => {
             <Logo />
           </LogoContainer>
         </Link>
-        <Tabs>
-          <Tab showBorder>
-            <TabText>Articles</TabText>
-          </Tab>
-          <Tab>
-            <TabText>About</TabText>
-          </Tab>
-        </Tabs>
       </Container>
     </>
   );

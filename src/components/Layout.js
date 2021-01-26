@@ -1,20 +1,37 @@
 import * as React from 'react';
 import Header from './Header';
 import Spacer from './Spacer';
+import theme from '../config/theme';
+import styled from 'styled-components';
 
 const pageStyles = {
-  color: '#232129',
-  margin: '0 auto',
-  maxWidth: '900px',
   fontFamily: 'Helvetica Neue,Helvetica,Arial,sans-serif',
+  backgroundColor: '#F8F8FF',
+  padding: 0,
+  margin: 0,
 };
+
+const MobilePadding = styled.div`
+  background-color: #f8f8ff;
+  max-width: 900px;
+  margin: 0 auto;
+  padding-left: ${theme.spacing.x2};
+  padding-right: ${theme.spacing.x2};
+  @media (theme.breakpoints.mediumandup) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+`;
 const Layout = ({children}) => {
   return (
     <main style={pageStyles}>
-      <Header />
-      <Spacer height="x8" />
-      <Spacer height="x8" />
-      {children}
+      <MobilePadding>
+        <Spacer height="x8" />
+        <Header />
+        <Spacer height="x8" />
+        <Spacer height="x8" />
+        {children}
+      </MobilePadding>
     </main>
   );
 };

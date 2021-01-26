@@ -2,6 +2,9 @@ import * as React from 'react';
 import {useStaticQuery, Link, graphql} from 'gatsby';
 import Layout from '../components/Layout';
 import Spacer from '../components/Spacer';
+import Welcome from '../components/Welcome';
+import BlogPosts from '../templates/BlogPosts';
+import Text from '../components/Text';
 import styled from 'styled-components';
 import theme from '../config/theme';
 
@@ -90,91 +93,12 @@ const BlogAuthor = styled.p`
 `;
 
 const IndexPage = () => {
-  const data = useStaticQuery(
-    graphql`
-      query {
-        allMdx {
-          edges {
-            node {
-              frontmatter {
-                date
-                slug
-                excerpt
-                title
-                author
-              }
-            }
-          }
-        }
-      }
-    `,
-  );
   return (
     <Layout>
-      <WelcomeTextContainer>
-        <Border width="400px" />
-        <WelcomeText> WELCOME TO </WelcomeText>
-      </WelcomeTextContainer>
+      <Welcome />
       <Spacer height="x8" />
       <Spacer height="x8" />
-      <Spacer height="x2" />
-      <WelcomeTextContainer>
-        <Border width="250px" />
-        <WelcomeText> FISH FAT</WelcomeText>
-      </WelcomeTextContainer>
-      <Spacer height="x8" />
-      <Spacer height="x8" />
-      <SubText>
-        Unravelling the mysteries of this pale blue dot, one blog post at a
-        time.
-      </SubText>
-      <div style={{display: 'flex'}}>
-        <AuthorText color={theme.colors.secondary100}>by</AuthorText>
-        <Spacer width="x1" />
-        <AuthorText color={theme.colors.primary100} style={{cursor: 'pointer'}}>
-          @harcon_
-        </AuthorText>
-      </div>
-      <Spacer height="x8" />
-      <Blogs>
-        {data.allMdx.edges.map(item => {
-          return (
-            <Link
-              to={item.node.frontmatter.slug}
-              css={{textDecoration: 'none', color: 'inherit'}}>
-              <BlogPostContainer>
-                <BlogBoxRed />
-                <BlogBoxBlack>
-                  <div
-                    style={{
-                      width: '90%',
-                      padding: '5%',
-                      margin: '0 auto',
-                      alignSelf: 'flex-end',
-                    }}>
-                    <TitleText>{item.node.frontmatter.title}</TitleText>
-                    <div
-                      style={{
-                        width: '100%',
-                        display: 'flex',
-                        justifyContent: 'space-between',
-                      }}>
-                      <BlogAuthor>{`by ${item.node.frontmatter.author}`}</BlogAuthor>
-                      <BlogAuthor>{item.node.frontmatter.date}</BlogAuthor>
-                    </div>
-                    <div
-                      style={{
-                        width: '25px',
-                        height: '7.5px',
-                        backgroundColor: theme.colors.primary100,
-                      }}></div>
-                  </div>
-                </BlogBoxBlack>
-              </BlogPostContainer>
-            </Link>
-          );
-        })}
-      </Blogs>
+      <BlogPosts />
     </Layout>
   );
 };

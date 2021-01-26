@@ -83,6 +83,13 @@ const theme = {
     x128: '512px',
   },
 
+  breakpoints: {
+    notSmall: 'min-width: 30em',
+    mediumAndUp: 'min-width: 60em',
+    medium: 'min-width: 30em and max-width: 60em',
+    large: 'min-width: 60em',
+  },
+
   radii: {
     x1: 4,
     x2: 8,
