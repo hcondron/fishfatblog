@@ -71,8 +71,9 @@ const BodyStyles = styled.div`
 
   p {
     font-size: ${theme.fontScale.x3};
-    font-weight: ${theme.fontWeight.light};
-    font-family: 'sans serif';
+    font-weight: ${theme.fontWeight.normal};
+    color: #444444;
+    line-height: 1.5;
   }
 
   strong {
@@ -104,12 +105,15 @@ const BodyStyles = styled.div`
 export default function BlogPost({data}) {
   return (
     <Layout>
-      <Link to="/" css={{textDecoration: 'none', color: 'inherit'}}>
+      <Link
+        to="/"
+        css={{textDecoration: 'none', color: 'inherit', cursor: 'pointer'}}>
         <BackText
           tag="h1"
           size="x3"
           weight="normal"
           color={theme.colors.grey30}
+          cursor="pointer"
           lineheight={1.5}>
           Back
         </BackText>
@@ -120,7 +124,7 @@ export default function BlogPost({data}) {
       </BlogTitle>
       <Spacer height="x4" />
       <TitleContainer>
-        <Text tag="p" size="x3" weight="light" lineHeight={1.5}>
+        <Text tag="p" size="x3" weight="normal" lineHeight={1.5}>
           {`by ${data.mdx.frontmatter.author}`}
         </Text>
         <Spacer width="x4" />

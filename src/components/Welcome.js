@@ -19,8 +19,9 @@ const WelcomeTextContainer = styled.div`
   overflow: hidden;
 `;
 
-const SubText = styled(Text)`
+const SubText = styled.div`
   display: flex;
+  width: 100%;
   justify-content: center;
   text-align: center;
   @media (${theme.breakpoints.mediumAndUp}) {
@@ -85,9 +86,10 @@ const Welcome = () => {
       <Spacer height="x8" />
       <Spacer height="x8" />
       <Spacer height="x8" />
-      <SubText tag="h3" size="x5" weight="light">
-        Unravelling the mysteries of this pale blue dot, <br></br>one blog post
-        at a time.
+      <SubText>
+        <Text tag="h3" size="x5" weight="light">
+          Learning more about our pale blue dot, <br></br> one story at a time.
+        </Text>
       </SubText>
       <Spacer height="x4" />
       <AuthorContainer style={{display: 'flex', width: '100%'}}>
