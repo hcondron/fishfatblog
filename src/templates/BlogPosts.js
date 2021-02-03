@@ -99,7 +99,6 @@ const BlogPosts = () => {
                     margin: '0 auto',
                     alignSelf: 'flex-end',
                   }}>
-                  <BlogPostImage src="https://static.politico.com/dims4/default/fbab9f1/2147483647/resize/1160x/quality/90/?url=https%3A%2F%2Fstatic.politico.com%2Ff9%2F40%2Ff514e81c4c43899627ded6bb4321%2Fgettyimages-1198871917-1.jpg" />
                   <Text tag="h3" size="x3" weight="medium" lineHeight={1.5}>
                     {item.node.frontmatter.title}
                   </Text>
