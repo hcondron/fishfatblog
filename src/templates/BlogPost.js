@@ -45,9 +45,7 @@ const BodyStyles = styled.div`
   h3,
   h4,
   h5,
-  h6,
-  p {
-    color: ${theme.colors.secondary100};
+  h6 {
     text-align: left;
     @media (${theme.breakpoints.mediumAndUp}) {
       text-align: left;
@@ -70,10 +68,10 @@ const BodyStyles = styled.div`
   }
 
   p {
-    font-size: ${theme.fontScale.x3};
+    font-size: 1.125rem;
     font-weight: ${theme.fontWeight.normal};
-    color: #444444;
-    line-height: 1.5;
+    color: rgba(68, 68, 68);
+    line-height: 1.6;
   }
 
   strong {

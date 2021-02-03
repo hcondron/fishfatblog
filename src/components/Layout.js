@@ -22,7 +22,7 @@ const pageStyles = {
 
 const MobilePadding = styled.div`
   background-color: #f8f8ff;
-  max-width: 900px;
+  max-width: 700px;
   margin: 0 auto;
   padding-left: ${theme.spacing.x2};
   padding-right: ${theme.spacing.x2};

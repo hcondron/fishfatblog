@@ -25,7 +25,7 @@ const SubText = styled.div`
   justify-content: center;
   text-align: center;
   @media (${theme.breakpoints.mediumAndUp}) {
-    width: 70%;
+    width: 85%;
     justify-content: flex-start;
     text-align: left;
   } ;
