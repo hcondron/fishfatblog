@@ -1,8 +1,8 @@
-import * as React from 'react';
-import Spacer from '../components/Spacer';
-import Text from '../components/Text';
-import styled from 'styled-components';
-import theme from '../config/theme';
+import * as React from "react";
+import Spacer from "../components/Spacer";
+import Text from "../components/Text";
+import styled from "styled-components";
+import theme from "../config/theme";
 
 // styles
 const Border = styled.div`
@@ -25,10 +25,10 @@ const SubText = styled.div`
   justify-content: center;
   text-align: center;
   @media (${theme.breakpoints.mediumAndUp}) {
-    width: 85%;
+    width: 90%;
     justify-content: flex-start;
     text-align: left;
-  } ;
+  }
 `;
 
 const AuthorContainer = styled.div`
@@ -50,6 +50,13 @@ const MobileWrapper = styled.div`
   } ;
 `;
 
+const StyledText = styled(Text)`
+  text-align: center;
+  @media (${theme.breakpoints.mediumAndUp}) {
+    text-align: left;
+  } ;
+`;
+
 const Welcome = () => {
   return (
     <>
@@ -61,9 +68,10 @@ const Welcome = () => {
             size="x7"
             weight="semibold"
             lineHeight={1.5}
-            style={{position: 'relative'}}>
-            {' '}
-            WELCOME TO{' '}
+            style={{ position: "relative" }}
+          >
+            {" "}
+            WELCOME TO{" "}
           </Text>
         </WelcomeTextContainer>
       </MobileWrapper>
@@ -78,7 +86,8 @@ const Welcome = () => {
             align="center"
             weight="semibold"
             lineHeight={1.5}
-            style={{position: 'relative'}}>
+            style={{ position: "relative" }}
+          >
             FISH FAT
           </Text>
         </WelcomeTextContainer>
@@ -87,12 +96,12 @@ const Welcome = () => {
       <Spacer height="x8" />
       <Spacer height="x8" />
       <SubText>
-        <Text tag="h3" size="x5" weight="light">
+        <StyledText tag="h3" size="x5" weight="light">
           Learning more about our pale blue dot, <br></br> one story at a time.
-        </Text>
+        </StyledText>
       </SubText>
       <Spacer height="x4" />
-      <AuthorContainer style={{display: 'flex', width: '100%'}}>
+      <AuthorContainer style={{ display: "flex", width: "100%" }}>
         <Text tag="h4" size="x4" weight="light">
           by
         </Text>
@@ -102,9 +111,10 @@ const Welcome = () => {
           href="https://twitter.com/_harcon"
           size="x4"
           weight="light"
-          style={{textDecoration: 'none'}}
+          style={{ textDecoration: "none" }}
           color={theme.colors.primary100}
-          cursor="pointer">
+          cursor="pointer"
+        >
           @_harcon
         </Text>
       </AuthorContainer>

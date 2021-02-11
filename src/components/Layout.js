@@ -1,9 +1,9 @@
-import * as React from 'react';
-import Header from './Header';
-import Spacer from './Spacer';
-import theme from '../config/theme';
-import styled from 'styled-components';
-import {createGlobalStyle} from 'styled-components';
+import * as React from "react";
+import Header from "./Header";
+import Spacer from "./Spacer";
+import theme from "../config/theme";
+import styled from "styled-components";
+import { createGlobalStyle } from "styled-components";
 
 const Globalstyle = createGlobalStyle`
   body {
@@ -14,24 +14,25 @@ const Globalstyle = createGlobalStyle`
 `;
 
 const pageStyles = {
-  fontFamily: 'Helvetica Neue,Helvetica,Arial,sans-serif',
-  backgroundColor: '#F8F8FF',
+  fontFamily: "Helvetica Neue,Helvetica,Arial,sans-serif",
+  backgroundColor: "#F8F8FF",
   padding: 0,
   margin: 0,
 };
 
 const MobilePadding = styled.div`
   background-color: #f8f8ff;
-  max-width: 700px;
+  max-width: 600px;
   margin: 0 auto;
+  box-sizing: border-box;
   padding-left: ${theme.spacing.x2};
   padding-right: ${theme.spacing.x2};
   @media (theme.breakpoints.mediumandup) {
     padding-left: 0;
     padding-right: 0;
-  }
+  } ;
 `;
-const Layout = ({children}) => {
+const Layout = ({ children }) => {
   return (
     <main style={pageStyles}>
       <Globalstyle />

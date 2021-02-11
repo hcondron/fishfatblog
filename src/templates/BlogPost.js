@@ -1,11 +1,11 @@
-import React from 'react';
-import styled from 'styled-components';
-import {Link, graphql} from 'gatsby';
-import {MDXRenderer} from 'gatsby-plugin-mdx';
-import Spacer from '../components/Spacer';
-import Layout from '../components/Layout';
-import theme from '../config/theme';
-import Text from '../components/Text';
+import React from "react";
+import styled from "styled-components";
+import { Link, graphql } from "gatsby";
+import { MDXRenderer } from "gatsby-plugin-mdx";
+import Spacer from "../components/Spacer";
+import Layout from "../components/Layout";
+import theme from "../config/theme";
+import Text from "../components/Text";
 
 const TitleContainer = styled.div`
   display: flex;
@@ -34,7 +34,7 @@ const BackText = styled(Text)`
 const BlogTitle = styled(Text)`
   width: 100%;
   @media (${theme.breakpoints.mediumAndUp}) {
-    width: 70%;
+    width: 95%;
     text-align: left;
   } ;
 `;
@@ -100,19 +100,21 @@ const BodyStyles = styled.div`
     box-sizing: border-box;
   }
 `;
-export default function BlogPost({data}) {
+export default function BlogPost({ data }) {
   return (
     <Layout>
       <Link
         to="/"
-        css={{textDecoration: 'none', color: 'inherit', cursor: 'pointer'}}>
+        css={{ textDecoration: "none", color: "inherit", cursor: "pointer" }}
+      >
         <BackText
           tag="h1"
           size="x3"
           weight="normal"
           color={theme.colors.grey30}
           cursor="pointer"
-          lineheight={1.5}>
+          lineheight={1.5}
+        >
           Back
         </BackText>
       </Link>
@@ -131,7 +133,8 @@ export default function BlogPost({data}) {
           size="x3"
           color={theme.colors.primary100}
           weight="light"
-          lineHeight={1.5}>
+          lineHeight={1.5}
+        >
           {data.mdx.frontmatter.date}
         </Text>
       </TitleContainer>
@@ -146,7 +149,7 @@ export default function BlogPost({data}) {
 }
 export const pageQuery = graphql`
   query SinglePostQuery($id: String!) {
-    mdx(id: {eq: $id}) {
+    mdx(id: { eq: $id }) {
       frontmatter {
         date
         author
