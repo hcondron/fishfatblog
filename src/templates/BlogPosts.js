@@ -34,6 +34,7 @@ const BlogBoxRed = styled.div`
   background-color: #f8f8ff;
   border: ${theme.borderWidth} solid ${theme.colors.primary100};
 `;
+
 const BlogBoxBlack = styled.div`
   display: flex;
   position: absolute;
@@ -175,10 +176,10 @@ const BlogPosts = () => {
                     >
                       {item.node.frontmatter.title}
                     </Text>
-                    <Spacer height="x1" />
+                    <Spacer height="x2" />
                     <Text
                       tag="h2"
-                      size="x2"
+                      size="x3"
                       mobileSize="x2"
                       weight="light"
                       lineHeight={1.25}
