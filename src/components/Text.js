@@ -1,14 +1,14 @@
-import {createElement as h} from 'react';
-import styled from 'styled-components';
-import theme from '../config/theme';
+import { createElement as h } from "react";
+import styled from "styled-components";
+import theme from "../config/theme";
 
-export const withDynamicTag = Component => {
+export const withDynamicTag = (Component) => {
   const bucket = Object.create(null);
 
-  const DynamicTag = props => {
-    const {tag} = props;
+  const DynamicTag = (props) => {
+    const { tag } = props;
 
-    if (typeof tag !== 'string') {
+    if (typeof tag !== "string") {
       return h(Component, props);
     }
 
@@ -29,19 +29,27 @@ export const withDynamicTag = Component => {
 };
 
 const TextBase = styled.p`
-  cursor: ${({cursor}) => cursor || 'auto'};
-  color: ${({color}) => color || theme.colors.secondary100};
-  font-size: ${({size}) => theme.fontScale[size] || theme.fontScale.x3};
-  font-weight: ${({weight}) =>
+  cursor: ${({ cursor }) => cursor || "auto"};
+  color: ${({ color }) => color || theme.colors.secondary100};
+  font-size: ${({ size, mobileSize }) =>
+    mobileSize
+      ? theme.fontScale[mobileSize]
+      : theme.fontScale[size] || theme.fontScale.x3};
+  font-weight: ${({ weight }) =>
     theme.fontWeight[weight] || theme.fontWeight.normal};
-  text-align: ${({align}) => align || 'left'};
-  line-height: ${({lineHeight}) => lineHeight};
+  text-align: ${({ align }) => align || "left"};
+  line-height: ${({ lineHeight }) => lineHeight};
   margin: 0;
   padding: 0;
+  text-align: ${({ alignOnMobile }) => (alignOnMobile ? "center" : "left")};
+  @media (${theme.breakpoints.mediumAndUp}) {
+    font-size: ${({ size }) => theme.fontScale[size] || theme.fontScale.x3};
+    text-align: left;
+  }
 `;
 
 export const Strong = styled.strong`
-  font-weight: ${props => props.theme.fontWeights.bold};
+  font-weight: ${(props) => props.theme.fontWeights.bold};
 `;
 
 export const Em = styled.em`

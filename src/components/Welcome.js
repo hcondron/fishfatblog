@@ -50,11 +50,14 @@ const MobileWrapper = styled.div`
   } ;
 `;
 
-const StyledText = styled(Text)`
-  text-align: center;
+const StyledText = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   @media (${theme.breakpoints.mediumAndUp}) {
-    text-align: left;
-  } ;
+    align-items: left;
+    justify-content: left;
+  }
 `;
 
 const Welcome = () => {
@@ -96,8 +99,11 @@ const Welcome = () => {
       <Spacer height="x8" />
       <Spacer height="x8" />
       <SubText>
-        <StyledText tag="h3" size="x5" weight="light">
-          Learning more about our pale blue dot, <br></br> one story at a time.
+        <StyledText>
+          <Text tag="h3" size="x5" weight="light" alignOnMobile={true}>
+            Learning more about our pale blue dot, <br></br> one story at a
+            time.
+          </Text>
         </StyledText>
       </SubText>
       <Spacer height="x4" />

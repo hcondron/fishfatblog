@@ -3,6 +3,7 @@ import Header from "./Header";
 import Spacer from "./Spacer";
 import theme from "../config/theme";
 import styled from "styled-components";
+import Text from "./Text";
 import { createGlobalStyle } from "styled-components";
 
 const Globalstyle = createGlobalStyle`
@@ -24,9 +25,8 @@ const MobilePadding = styled.div`
   background-color: #f8f8ff;
   max-width: 600px;
   margin: 0 auto;
-  box-sizing: border-box;
-  padding-left: ${theme.spacing.x2};
-  padding-right: ${theme.spacing.x2};
+  padding-left: ${theme.spacing.x5};
+  padding-right: ${theme.spacing.x5};
   @media (theme.breakpoints.mediumandup) {
     padding-left: 0;
     padding-right: 0;
@@ -43,6 +43,10 @@ const Layout = ({ children }) => {
         <Spacer height="x8" />
         {children}
       </MobilePadding>
+      <Spacer height="x4" />
+      <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'center'}}>
+        <Text align="center" size="x2" weight="normal" color={theme.colors.grey30}>©2021 Harry Condron</Text>
+      </div>
     </main>
   );
 };

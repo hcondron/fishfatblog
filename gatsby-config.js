@@ -1,42 +1,47 @@
 module.exports = {
   siteMetadata: {
-    title: 'fishfat',
+    title: "fishfat",
   },
   plugins: [
-    'gatsby-plugin-netlify-cms',
-    'gatsby-plugin-styled-components',
+    "gatsby-plugin-netlify-cms",
+    "gatsby-plugin-styled-components",
     {
-      resolve: 'gatsby-plugin-google-analytics',
+      resolve: "gatsby-plugin-google-analytics",
       options: {
-        trackingId: '259810614',
+        trackingId: "259810614",
       },
     },
-    'gatsby-plugin-sharp',
-    'gatsby-plugin-mdx',
-    'gatsby-transformer-sharp',
+    `gatsby-plugin-sharp`,
+    "gatsby-transformer-sharp",
     {
-      resolve: 'gatsby-source-filesystem',
+      resolve: `gatsby-plugin-mdx`,
       options: {
-        name: 'images',
-        path: './src/images/',
+        extensions: ['.md', '.mdx'],
+        gatsbyRemarkPlugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 1200,
+            },
+          },
+        ],
       },
-      __key: 'images',
     },
     {
-      resolve: 'gatsby-source-filesystem',
+      resolve: "gatsby-source-filesystem",
       options: {
-        name: 'pages',
-        path: './src/pages/',
+        name: "pages",
+        path: "./src/pages/",
       },
-      __key: 'pages',
+      __key: "pages",
     },
     {
-      resolve: 'gatsby-source-filesystem',
+      resolve: "gatsby-source-filesystem",
       options: {
-        name: 'posts',
-        path: './src/posts',
+        name: "posts",
+        path: "./src/posts",
       },
-      __key: 'pages',
+      __key: "posts",
     },
   ],
 };

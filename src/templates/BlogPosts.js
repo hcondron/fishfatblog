@@ -4,6 +4,7 @@ import Spacer from "../components/Spacer";
 import Text from "../components/Text";
 import styled from "styled-components";
 import theme from "../config/theme";
+import Img from 'gatsby-image'
 
 // styles
 const BlogPostContainer = styled.div`
@@ -13,13 +14,13 @@ const BlogPostContainer = styled.div`
   }
   cursor: pointer;
   background-color: #f8f8ff;
-  width: 300px;
-  height: 300px;
+  width: 350px;
+  height: 350px;
   margin: 0 auto;
   margin-bottom: 45px;
   @media (${theme.breakpoints.mediumAndUp}) {
     width: 600px;
-    margin-bottom: 60px;
+    margin-bottom: 35px;
   }
 `;
 
@@ -49,7 +50,7 @@ const BlogBoxBlack = styled.div`
   }
 `;
 
-const BlogPostImage = styled.img`
+const BlogPostImage = styled(Img)`
   height: 100%;
   width: 100%;
 `;
@@ -60,20 +61,20 @@ const Blogs = styled.div`
   flex-wrap: wrap;
   flex-direction: column;
   justify-content: center;
+  box-sizing: border-box;
   @media (${theme.breakpoints.mediumAndUp}) {
     flex-direction: row;
-    justify-content: space-between;
   }
 `;
 
 const ImageContainer = styled.div`
   padding: 2%;
   padding-right: 2.5%;
-  height: 70%;
+  height: 65%;
   width: 100%;
   box-sizing: border-box;
   @media (${theme.breakpoints.mediumAndUp}) {
-    width: 70%;
+    width: 65%;
     height: 100%;
   }
 `;
@@ -81,7 +82,7 @@ const ImageContainer = styled.div`
 const BlogDescContainer = styled.div`
   display: flex;
   width: 100%;
-  height: 30%;
+  height: 35%;
   padding-top: 0;
   padding-bottom: 2%;
   padding-right: 2%;
@@ -91,7 +92,7 @@ const BlogDescContainer = styled.div`
   flex-direction: column;
   box-sizing: border-box;
   @media (${theme.breakpoints.mediumAndUp}) {
-    width: 30%;
+    width: 35%;
     height: 100%;
     padding-top: 2%;
     padding-left: 0;
@@ -108,9 +109,6 @@ const AuthorAndDateContainer = styled.div`
 
 const BlogTitleContainer = styled.div`
   width: 95%;
-  @media (${theme.breakpoints.mediumAndUp}) {
-    width: 100%;
-  }
 `;
 
 const BoxGraphic = styled.div`
@@ -130,12 +128,21 @@ const BlogPosts = () => {
         allMdx {
           edges {
             node {
+              id
               frontmatter {
-                date
-                slug
-                excerpt
-                title
+                featureImage {
+                  childImageSharp {
+                    fluid {
+                      ...GatsbyImageSharpFluid
+                    }
+                  }
+                }
                 author
+                date
+                excerpt
+                subtitle
+                slug
+                title
               }
             }
           }
@@ -155,12 +162,28 @@ const BlogPosts = () => {
               <BlogBoxRed />
               <BlogBoxBlack>
                 <ImageContainer>
-                  <BlogPostImage src="https://epsilon.psyche.co/images/ea9b484b-2dff-4bf9-b47b-250c1bef659e/1500x1500.jpg" />
+                  <BlogPostImage fluid={item.node.frontmatter.featureImage.childImageSharp.fluid} />
                 </ImageContainer>
                 <BlogDescContainer>
                   <BlogTitleContainer>
-                    <Text tag="h3" size="x3" weight="medium" lineHeight={1.25}>
+                    <Text
+                      tag="h3"
+                      size="x4"
+                      mobileSize="x3"
+                      weight="medium"
+                      lineHeight={1.25}
+                    >
                       {item.node.frontmatter.title}
+                    </Text>
+                    <Spacer height="x1" />
+                    <Text
+                      tag="h2"
+                      size="x2"
+                      mobileSize="x2"
+                      weight="light"
+                      lineHeight={1.25}
+                    >
+                      {item.node.frontmatter.subtitle}
                     </Text>
                   </BlogTitleContainer>
                   <AuthorAndDateContainer>

@@ -6,10 +6,12 @@ import Spacer from "../components/Spacer";
 import Layout from "../components/Layout";
 import theme from "../config/theme";
 import Text from "../components/Text";
+import Img from 'gatsby-image'
 
 const TitleContainer = styled.div`
   display: flex;
   align-items: top;
+  justify-content: center;
   @media (${theme.breakpoints.mediumAndUp}) {
     justify-content: flex-start;
   } ;
@@ -19,6 +21,7 @@ const Divider = styled.div`
   width: 70px;
   height: 7.5px;
   background: ${theme.colors.primary100};
+  margin: 0 auto;
   @media (${theme.breakpoints.mediumAndUp}) {
     margin: 0;
   } ;
@@ -34,7 +37,6 @@ const BackText = styled(Text)`
 const BlogTitle = styled(Text)`
   width: 100%;
   @media (${theme.breakpoints.mediumAndUp}) {
-    width: 95%;
     text-align: left;
   } ;
 `;
@@ -59,15 +61,15 @@ const BodyStyles = styled.div`
   }
   h2 {
     font-size: ${theme.fontScale.x4};
-    font-weight: ${theme.fontWeight.normal};
+    font-weight: ${theme.fontWeight.medium};
   }
   h3 {
-    font-size: ${theme.fontScale.x3};
-    font-weight: ${theme.fontWeight.normal};
+    font-size: ${theme.fontScale.x2};
+    font-weight: ${theme.fontWeight.light};
     color: ${theme.colors.grey30};
   }
 
-  p {
+  li,p {
     font-size: 1.125rem;
     font-weight: ${theme.fontWeight.normal};
     color: rgba(68, 68, 68);
@@ -99,28 +101,33 @@ const BodyStyles = styled.div`
     border: none;
     box-sizing: border-box;
   }
+  img {
+    width: 100%;
+  }
 `;
 export default function BlogPost({ data }) {
   return (
     <Layout>
-      <Link
-        to="/"
-        css={{ textDecoration: "none", color: "inherit", cursor: "pointer" }}
+      <Img fluid={data.mdx.frontmatter.featureImage.childImageSharp.fluid} />
+      <Spacer height="x8" />
+      <BlogTitle
+        tag="h1"
+        size="x7"
+        weight="medium"
+        lineHeight={1}
+        alignOnMobile={true}
       >
-        <BackText
-          tag="h1"
-          size="x3"
-          weight="normal"
-          color={theme.colors.grey30}
-          cursor="pointer"
-          lineheight={1.5}
-        >
-          Back
-        </BackText>
-      </Link>
-      <Spacer height="x4" />
-      <BlogTitle tag="h1" size="x7" weight="medium" lineHeight={1}>
         {data.mdx.frontmatter.title}
+      </BlogTitle>
+      <Spacer height="x4" />
+      <BlogTitle
+        tag="h2"
+        size="x4"
+        weight="normal"
+        lineHeight={1}
+        alignOnMobile={true}
+      >
+        {data.mdx.frontmatter.subtitle}
       </BlogTitle>
       <Spacer height="x4" />
       <TitleContainer>
@@ -144,6 +151,22 @@ export default function BlogPost({ data }) {
       <BodyStyles>
         <MDXRenderer>{data.mdx.body}</MDXRenderer>
       </BodyStyles>
+      <Spacer height="x4" />
+      <Link
+        to="/"
+        css={{ textDecoration: "none", color: "inherit", cursor: "pointer" }}
+      >
+        <BackText
+          tag="h1"
+          size="x3"
+          weight="normal"
+          color={theme.colors.grey30}
+          cursor="pointer"
+          lineheight={1.5}
+        >
+          Back
+        </BackText>
+      </Link>
     </Layout>
   );
 }
@@ -153,9 +176,17 @@ export const pageQuery = graphql`
       frontmatter {
         date
         author
+        subtitle
         excerpt
         slug
         title
+        featureImage {
+          childImageSharp {
+            fluid {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
       }
       body
     }
