@@ -4,7 +4,7 @@ import Spacer from "../components/Spacer";
 import Text from "../components/Text";
 import styled from "styled-components";
 import theme from "../config/theme";
-import Img from 'gatsby-image'
+import Img from "gatsby-image";
 
 // styles
 const BlogPostContainer = styled.div`
@@ -153,7 +153,7 @@ const BlogPosts = () => {
   );
   return (
     <Blogs>
-      {data.allMdx.edges.map((item) => {
+      {data.allMdx.edges.reverse().map((item) => {
         return (
           <Link
             to={item.node.frontmatter.slug}
@@ -163,7 +163,11 @@ const BlogPosts = () => {
               <BlogBoxRed />
               <BlogBoxBlack>
                 <ImageContainer>
-                  <BlogPostImage fluid={item.node.frontmatter.featureImage.childImageSharp.fluid} />
+                  <BlogPostImage
+                    fluid={
+                      item.node.frontmatter.featureImage.childImageSharp.fluid
+                    }
+                  />
                 </ImageContainer>
                 <BlogDescContainer>
                   <BlogTitleContainer>
