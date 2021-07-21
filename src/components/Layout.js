@@ -27,11 +27,12 @@ const MobilePadding = styled.div`
   margin: 0 auto;
   padding-left: ${theme.spacing.x5};
   padding-right: ${theme.spacing.x5};
-  @media (theme.breakpoints.mediumandup) {
+  @media (theme.breakpoints.mediumAndup) {
     padding-left: 0;
     padding-right: 0;
   } ;
 `;
+
 const Layout = ({ children }) => {
   return (
     <main style={pageStyles}>
