@@ -41,10 +41,8 @@ const TextBase = styled.p`
   line-height: ${({ lineHeight }) => lineHeight};
   margin: 0;
   padding: 0;
-  text-align: ${({ alignOnMobile }) => (alignOnMobile ? "center" : "left")};
   @media (${theme.breakpoints.mediumAndUp}) {
     font-size: ${({ size }) => theme.fontScale[size] || theme.fontScale.x3};
-    text-align: left;
   }
 `;
 

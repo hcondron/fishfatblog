@@ -8,8 +8,8 @@
     "gatsby"
   ],
   "scripts": {
-    "develop": "gatsby develop",
-    "start": "gatsby develop",
+    "develop": "SET NODE_OPTIONS=--openssl-legacy-provider && gatsby develop",
+    "start": "SET NODE_OPTIONS=--openssl-legacy-provider && gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean"

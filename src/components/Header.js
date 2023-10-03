@@ -12,7 +12,7 @@ const Container = styled.div`
   height: 70px;
   padding-top: ${theme.spacing.x7};
   @media (${theme.breakpoints.mediumAndUp}) {
-    justify-content: flex-start;
+    justify-content: center;
   }
 `;
 

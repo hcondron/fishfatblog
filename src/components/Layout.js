@@ -23,7 +23,7 @@ const pageStyles = {
 
 const MobilePadding = styled.div`
   background-color: #f8f8ff;
-  max-width: 600px;
+  max-width: 900px;
   margin: 0 auto;
   padding-left: ${theme.spacing.x5};
   padding-right: ${theme.spacing.x5};
@@ -41,12 +41,11 @@ const Layout = ({ children }) => {
         <Spacer height="x8" />
         <Header />
         <Spacer height="x8" />
-        <Spacer height="x8" />
         {children}
       </MobilePadding>
       <Spacer height="x4" />
       <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'center'}}>
-        <Text align="center" size="x2" weight="normal" color={theme.colors.grey30}>©2021 Harry Condron</Text>
+        <Text align="center" size="x2" weight="normal" color={theme.colors.grey30}>©2023 Harry Condron</Text>
       </div>
     </main>
   );
